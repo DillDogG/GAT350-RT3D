@@ -5,11 +5,9 @@
 #include <vector>
 #include <array>
 
-namespace nc
-{
+namespace nc {
 	// Input system that holds the state of input devices (keyboard, mouse).
-	class InputSystem : public ISystem
-	{
+	class InputSystem : public ISystem {
 	public:
 		InputSystem() = default;
 		~InputSystem() = default;

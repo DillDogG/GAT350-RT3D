@@ -1,9 +1,7 @@
 #include "InputSystem.h"
 
-namespace nc
-{
-	bool InputSystem::Initialize()
-	{
+namespace nc {
+	bool InputSystem::Initialize() {
 		int numKeys;
 		// get pointer to sdl keyboard states and number of keys
 		const uint8_t* keyboardState = SDL_GetKeyboardState(&numKeys);
@@ -20,13 +18,10 @@ namespace nc
 		return true;
 	}
 
-	void InputSystem::Shutdown()
-	{
-		//
+	void InputSystem::Shutdown() {
 	}
 
-	void InputSystem::Update()
-	{
+	void InputSystem::Update() {
 		// save previous keyboard state
 		m_prevKeyboardState = m_keyboardState;
 

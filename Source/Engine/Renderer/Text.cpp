@@ -3,15 +3,12 @@
 #include "Renderer.h"
 #include <SDL2-2.28.4/include/SDL_ttf.h>
 
-namespace nc
-{
-	Text::~Text()
-	{
+namespace nc {
+	Text::~Text() {
 		if (m_texture) SDL_DestroyTexture(m_texture);
 	}
 
-	void Text::Create(Renderer& renderer, const std::string& text, const Color& color)
-	{
+	void Text::Create(Renderer& renderer, const std::string& text, const Color& color) {
 		if (m_texture) SDL_DestroyTexture(m_texture);
 
 		SDL_Color c{ Color::ToInt(color.r), Color::ToInt(color.g), Color::ToInt(color.b), Color::ToInt(color.a) };
@@ -20,8 +17,7 @@ namespace nc
 		SDL_FreeSurface(surface);
 	}
 
-	void Text::Draw(Renderer& renderer, int x, int y)
-	{
+	void Text::Draw(Renderer& renderer, int x, int y) {
 		int width, height;
 		SDL_QueryTexture(m_texture, nullptr, nullptr, &width, &height);
 
@@ -29,8 +25,7 @@ namespace nc
 		SDL_RenderCopy(renderer.m_renderer, m_texture, NULL, &rect);
 	}
 
-	void Text::Draw(Renderer& renderer, const Transform& transform)
-	{
+	void Text::Draw(Renderer& renderer, const Transform& transform) {
 		int width, height;
 		SDL_QueryTexture(m_texture, nullptr, nullptr, &width, &height);
 

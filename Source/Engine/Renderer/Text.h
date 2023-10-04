@@ -6,12 +6,10 @@
 
 struct SDL_Texture;
 
-namespace nc
-{
+namespace nc {
 	class Renderer;
 
-	class Text
-	{
+	class Text {
 	public:
 		Text() = default;
 		Text(std::shared_ptr<Font> font) : m_font{ font } { }

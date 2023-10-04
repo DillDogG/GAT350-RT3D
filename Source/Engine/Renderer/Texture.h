@@ -4,10 +4,8 @@
 
 struct SDL_Texture;
 
-namespace nc
-{
-	class Texture : public Resource
-	{
+namespace nc {
+	class Texture : public Resource {
 	public:
 		Texture() = default;
 		~Texture();

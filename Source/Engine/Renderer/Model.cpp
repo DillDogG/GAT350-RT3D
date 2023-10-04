@@ -2,18 +2,14 @@
 #include "Renderer.h"
 #include <sstream>
 
-namespace nc
-{
-	bool Model::Create(std::string filename, ...)
-	{
+namespace nc {
+	bool Model::Create(std::string filename, ...) {
 		return Load(filename);
 	}
 
-	bool Model::Load(const std::string& filename)
-	{
+	bool Model::Load(const std::string& filename) {
 		std::string buffer;
-		if (!nc::readFile(filename, buffer))
-		{
+		if (!nc::readFile(filename, buffer)) {
 			WARNING_LOG("Could not load model: " << filename);
 			return false;
 		}
@@ -29,8 +25,7 @@ namespace nc
 		int numPoints = std::stoi(line);
 
 		// read vector2 points
-		for (int i = 0; i < numPoints; i++)
-		{
+		for (int i = 0; i < numPoints; i++) {
 			vec2 point;
 			stream >> point;
 
@@ -41,13 +36,11 @@ namespace nc
 	}
 
 
-	void Model::Draw(Renderer& renderer, const vec2& position, float rotation, float scale)
-	{
+	void Model::Draw(Renderer& renderer, const vec2& position, float rotation, float scale) {
 		if (m_points.empty()) return;
 
 		renderer.SetColor(Color::ToInt(m_color.r), Color::ToInt(m_color.g), Color::ToInt(m_color.b), Color::ToInt(m_color.a));
-		for (int i = 0; i < m_points.size() - 1; i++)
-		{
+		for (int i = 0; i < m_points.size() - 1; i++) {
 			vec2 p1 = (m_points[i] * scale).Rotate(rotation) + position;
 			vec2 p2 = (m_points[i + 1] * scale).Rotate(rotation) + position;
 						
@@ -55,15 +48,13 @@ namespace nc
 		}
 	}
 
-	void Model::Draw(Renderer& renderer, const Transform& transform)
-	{
+	void Model::Draw(Renderer& renderer, const Transform& transform) {
 		if (m_points.empty()) return;
 
 		mat3 mx = transform.GetMatrix();
 
 		renderer.SetColor(Color::ToInt(m_color.r), Color::ToInt(m_color.g), Color::ToInt(m_color.b), Color::ToInt(m_color.a));
-		for (int i = 0; i < m_points.size() - 1; i++)
-		{
+		for (int i = 0; i < m_points.size() - 1; i++) {
 			vec2 p1 = mx * m_points[i];
 			vec2 p2 = mx * m_points[i + 1];
 
@@ -71,12 +62,10 @@ namespace nc
 		}
 	}
 
-	float Model::GetRadius()
-	{
+	float Model::GetRadius() {
 		if (m_radius) return m_radius;
 
-		for (auto point : m_points)
-		{
+		for (auto point : m_points) {
 			float length = point.Length();
 			m_radius = Max(m_radius, length);
 		}

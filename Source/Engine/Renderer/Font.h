@@ -4,10 +4,8 @@
 
 struct _TTF_Font;
 
-namespace nc
-{
-	class Font : public Resource
-	{
+namespace nc {
+	class Font : public Resource {
 	public:
 		Font() = default;
 		Font(const std::string& filename, int fontSize);

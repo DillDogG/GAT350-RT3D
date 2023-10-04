@@ -1,10 +1,11 @@
 #pragma once
 #include "Framework/World.h"
+#include "Renderer/Renderer.h"
 #include "Core/Math/Vector2.h"
 #include <vector>
 
 namespace nc {
-	class World01 : public World {
+	class World02 : public World {
 	public:
 		bool Initialize() override;
 		void Shutdown() override;
@@ -16,5 +17,7 @@ namespace nc {
 		float m_time;
 		vec2 m_position;
 		std::vector<vec2> m_positions;
+
+		GLuint m_vao;
 	};
 }

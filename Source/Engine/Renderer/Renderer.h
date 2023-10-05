@@ -3,6 +3,8 @@
 #include "Font.h"
 #include "Model.h"
 #include "Text.h"
+#include "Program.h"
+#include "Shader.h"
 #include "Texture.h"
 
 #include <glad/include/glad/glad.h>

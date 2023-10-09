@@ -70,7 +70,7 @@ namespace nc {
         glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, 0, 0);
         glBindVertexBuffer(1, vbo[1], 0, 3 * sizeof(GLfloat));
 #endif
-        m_position.z = -10.0f;
+        //m_position.z = -10.0f;
         return true;
     }
 
@@ -86,7 +86,9 @@ namespace nc {
         m_time += dt;
 
         // model matrix
-        glm::mat4 model = glm::translate(glm::mat4(1), m_position);
+        glm::mat4 position = glm::translate(glm::mat4(1), m_position);
+        glm::mat4 rotation = glm::rotate(glm::mat4(1), glm::radians(m_angle), glm::vec3{ 0, 0, 1 });
+        glm::mat4 model = rotation * position;
         GLint uniform = glGetUniformLocation(m_program->m_program, "model");
         glUniformMatrix4fv(uniform, 1, GL_FALSE, glm::value_ptr(model));
 

@@ -1,5 +1,6 @@
 #pragma once
 #include "Framework/System.h"
+#include "VertexBuffer.h"
 #include "Font.h"
 #include "Model.h"
 #include "Program.h"

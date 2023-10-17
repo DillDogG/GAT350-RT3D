@@ -31,7 +31,7 @@ namespace nc
 		glGenBuffers(1, &m_vbo);
 		glBindBuffer(GL_ARRAY_BUFFER, m_vbo);
 		// copy data into vertex buffer
-		glBufferData(GL_ARRAY_BUFFER, sizeof(data), data, GL_STATIC_DRAW);
+		glBufferData(GL_ARRAY_BUFFER, size, data, GL_STATIC_DRAW);
 	}
 
 	void VertexBuffer::CreateIndexBuffer(GLenum indexType, GLsizei count, GLvoid* data)
@@ -49,13 +49,13 @@ namespace nc
 		switch (m_indexType)
 		{
 		case GL_UNSIGNED_BYTE:
-			size = m_indexCount * m_indexType;
+			size = m_indexCount * sizeof(GLubyte);
 			break;
 		case GL_UNSIGNED_SHORT:
-			size = m_indexCount * m_indexType;
+			size = m_indexCount * sizeof(GLushort);
 			break;
 		case GL_UNSIGNED_INT:
-			size = m_indexCount * m_indexType;
+			size = m_indexCount * sizeof(GLuint);
 			break;
 		}
 

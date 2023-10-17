@@ -1,0 +1,12 @@
+{
+  "program":"shaders/unlit_multi_texture.prog",
+  "textures": [ "textures/llama.tga", "textures/color_grid.png" ],
+  "color":[
+      1,
+      1,
+      1,
+      1
+    ],
+  "tiling": [ 2, 2 ],
+  "offset": [ 0, 0 ]
+}

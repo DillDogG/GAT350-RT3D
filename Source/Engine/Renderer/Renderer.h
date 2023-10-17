@@ -1,12 +1,13 @@
 #pragma once
 #include "Framework/System.h"
-#include "VertexBuffer.h"
 #include "Font.h"
 #include "Model.h"
 #include "Program.h"
 #include "Shader.h"
 #include "Texture.h"
 #include "Gui.h"
+#include "VertexBuffer.h"
+#include "Material.h"
 #include <glad/include/glad/glad.h>
 #include <SDL2-2.28.4/include/SDL.h>
 #include <string>

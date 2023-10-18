@@ -22,7 +22,7 @@ namespace nc
 
 		if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
 		{
-			WARNING_LOG("Could not load assimp file %s" << importer.GetErrorString());
+			WARNING_LOG("Could not load assimp file " << filename << " error string: " << importer.GetErrorString());
 			return false;
 		}
 

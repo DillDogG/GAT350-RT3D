@@ -6,10 +6,12 @@
 
 namespace nc {
     bool World04::Initialize() {
+        
         auto material = GET_RESOURCE(Material, "materials/grid.mtrl");
         m_model = std::make_shared<Model>();
         m_model->SetMaterial(material);
-        m_model->Create("models/bunny.obj");
+        m_model->Load("models/sphere.obj");
+
 
         // vertex data
         //float vertexData[] = {
@@ -33,10 +35,11 @@ namespace nc {
     void World04::Update(float dt) {
         ENGINE.GetSystem<Gui>()->BeginFrame();
         ImGui::Begin("Transform");
-        ImGui::DragFloat3("Position", &m_transform.position[0]);
-        ImGui::DragFloat3("Rotation", &m_transform.rotation[0]);
-        ImGui::DragFloat3("Scale", &m_transform.scale[0]);
+        ImGui::DragFloat3("Position", &m_transform.position[0], 0.1f);
+        ImGui::DragFloat3("Rotation", &m_transform.rotation[0], 0.1f);
+        ImGui::DragFloat3("Scale", &m_transform.scale[0], 0.1f);
         ImGui::End();
+        
         //m_angle += dt * 3;
         //m_transform.rotation.z += 30 * dt;
         m_transform.position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A) ? m_speed * -dt : 0;
@@ -67,10 +70,8 @@ namespace nc {
         renderer.BeginFrame();
 
         // render
-        //glBindVertexArray(m_vao);
-        //glDrawArrays(GL_TRIANGLE_STRIP, 0, 4);
-        //m_vertexBuffer->Draw(GL_TRIANGLE_STRIP);
-        m_model->Draw(GL_TRIANGLES);
+        //glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+        m_model->Draw();
 
         ENGINE.GetSystem<Gui>()->Draw();
         // post-render

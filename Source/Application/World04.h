@@ -14,6 +14,7 @@ namespace nc {
 	private:
 		float m_time = 0;
 		float m_speed = 5;
+		float m_rotateSpeed = 30;
 
 		//GLuint m_vao = 0;
 		//res_t<Program> m_program;

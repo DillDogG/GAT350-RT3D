@@ -5,6 +5,19 @@
 #include <vector>
 
 namespace nc {
+	struct light_t {
+		enum eType {
+			Point,
+			Directional,
+			Spot
+		};
+		eType type;
+		glm::vec3 position;
+		glm::vec3 direction;
+		glm::vec3 color;
+		float cutoff;
+	};
+
 	class World04 : public World {
 	public:
 		bool Initialize() override;
@@ -16,11 +29,9 @@ namespace nc {
 		float m_speed = 5;
 		float m_rotateSpeed = 30;
 
-		//GLuint m_vao = 0;
-		//res_t<Program> m_program;
-		//res_t<Texture> m_texture;
-		//res_t<Material> m_material;
-		//res_t<VertexBuffer> m_vertexBuffer;
+		glm::vec3 ambientLight{ 0.2f, 0.2f, 0.2f };
+		light_t m_light;
+
 		Transform m_transform;
 		res_t<Model> m_model;
 	};

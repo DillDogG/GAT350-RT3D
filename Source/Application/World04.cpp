@@ -10,22 +10,14 @@ namespace nc {
         auto material = GET_RESOURCE(Material, "materials/grid.mtrl");
         m_model = std::make_shared<Model>();
         m_model->SetMaterial(material);
-        m_model->Load("models/cube.obj", glm::vec3{ 0 }, glm::vec3{ -90, 0, 0 });
+        m_model->Load("models/plane.obj", glm::vec3{ 0 }, glm::vec3{ -90, 0, 0 });
 
+        m_light.type = light_t::eType::Point;
+        m_light.position = glm::vec3{ 0, 8, 0 };
+        m_light.direction = glm::vec3{ 0, -1, 0 };
+        m_light.color = glm::vec3{ 1, 1, 1 };
+        m_light.cutoff = 30.0f;
 
-        // vertex data
-        //float vertexData[] = {
-        //    -0.8f, -0.8f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f,
-        //     -0.8f, 0.8f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 1.0f,
-        //     0.8f, -0.8f, 0.0f, 0.0f, 0.0f, 1.0f, 1.0f, 0.0f,
-        //     0.8f,  0.8f, 0.0f, 1.0f, 1.0f, 1.0f, 1.0f, 1.0f
-        //};
-
-        //m_vertexBuffer = std::make_shared<VertexBuffer>();
-        //m_vertexBuffer->CreateVertexBuffer(sizeof(vertexData), 4, vertexData);
-        //m_vertexBuffer->SetAttribute(0, 3, 8 * sizeof(GLfloat), 0);                  // position 
-        //m_vertexBuffer->SetAttribute(1, 3, 8 * sizeof(GLfloat), 3 * sizeof(float));  // color 
-        //m_vertexBuffer->SetAttribute(2, 2, 8 * sizeof(GLfloat), 6 * sizeof(float));  // texcoord
         return true;
     }
 
@@ -38,6 +30,16 @@ namespace nc {
         ImGui::DragFloat3("Position", &m_transform.position[0], 0.1f);
         ImGui::DragFloat3("Rotation", &m_transform.rotation[0], 0.1f);
         ImGui::DragFloat3("Scale", &m_transform.scale[0], 0.1f);
+        ImGui::End();
+
+        ImGui::Begin("Light");
+        const char* types[] = {"Point", "Directional", "Spot"};
+        ImGui::Combo("Type", (int*)(& m_light.type), types, 3);
+        ImGui::DragFloat3("Ambient Light", glm::value_ptr(ambientLight), 0.1f);
+        ImGui::DragFloat3("Diffuse Light", glm::value_ptr(m_light.color), 0.1f);
+        if (m_light.type != light_t::Directional) ImGui::DragFloat3("Position", glm::value_ptr(m_light.position), 0.1f);
+        if (m_light.type != light_t::Point) ImGui::DragFloat3("Direction", glm::value_ptr(m_light.direction), 0.1f);
+        if (m_light.type == light_t::Spot) ImGui::DragFloat("Cutoff", &m_light.cutoff, 1, 0, 90);
         ImGui::End();
         
         //m_angle += dt * 3;
@@ -70,6 +72,13 @@ namespace nc {
         auto material = m_model->GetMaterial();
         material->ProcessGui();
         material->Bind();
+
+        material->GetProgram()->SetUniform("light.type", m_light.type);
+        material->GetProgram()->SetUniform("light.ambientLight", ambientLight); 
+        material->GetProgram()->SetUniform("light.diffuseLight", m_light.color);
+        material->GetProgram()->SetUniform("light.lightPosition", m_light.position);
+        material->GetProgram()->SetUniform("light.direction", m_light.direction);
+        material->GetProgram()->SetUniform("light.cutoff", glm::radians(m_light.cutoff));
 
         // model matrix
         material->GetProgram()->SetUniform("model", m_transform.GetMatrix());

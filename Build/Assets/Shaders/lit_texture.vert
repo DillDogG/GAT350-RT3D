@@ -22,9 +22,11 @@ uniform struct Material {
 
 void main()
 {
+	mat4 modelView = view * model;
 	oposition = vec3(model * vec4(vposition, 1));
-	onormal = mat3(transpose(inverse(model))) * vnormal;
-	otexcoord = vtexcoord;
+	//onormal = mat3(transpose(inverse(model))) * vnormal;
+	onormal = normalize(mat3(modelView) * vnormal);
+	otexcoord = (vtexcoord * material.tiling) + material.offset;
 
 
 	mat4 mvp = projection * view * model;

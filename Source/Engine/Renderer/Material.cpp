@@ -48,9 +48,6 @@ namespace nc
 		m_program->SetUniform("material.shininess", shininess);
 		m_program->SetUniform("material.tiling", tiling);
 		m_program->SetUniform("material.offset", offset);
-		m_program->SetUniform("light.ambientLight", ambientLight);
-		m_program->SetUniform("light.diffuseLight", diffuseLight);
-		m_program->SetUniform("light.lightPosition", lightPosition);
 
 		for (size_t i = 0; i < m_textures.size(); i++)
 		{
@@ -67,11 +64,6 @@ namespace nc
 		ImGui::DragFloat("Shininess", &shininess, 0.1f, 2.0f, 200.0f);
 		ImGui::DragFloat2("Tiling", glm::value_ptr(tiling), 0.1f);
 		ImGui::DragFloat2("Offset", glm::value_ptr(offset), 0.1f);
-		ImGui::End();
-		ImGui::Begin("Light");
-		ImGui::DragFloat3("Ambient Light", glm::value_ptr(ambientLight), 0.1f);
-		ImGui::DragFloat3("Diffuse Light", glm::value_ptr(diffuseLight), 0.1f);
-		ImGui::DragFloat3("Light Position", glm::value_ptr(lightPosition), 0.1f);
 		ImGui::End();
 	}
 }

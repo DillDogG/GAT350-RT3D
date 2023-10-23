@@ -1,4 +1,7 @@
 #version 430
+#define POINT       0
+#define DIRECTIONAL 1
+#define SPOT        2
 
 in layout(location = 0) vec3 fposition;
 in layout(location = 1) vec3 fnormal;
@@ -17,9 +20,12 @@ uniform struct Material {
 } material;
 
 uniform struct Light {
+	int type;
 	vec3 ambientLight;
 	vec3 diffuseLight;
 	vec3 lightPosition;
+	vec3 direction;
+	float cutoff;
 } light;
 
 vec3 ads(in vec3 position, in vec3 normal)
@@ -27,10 +33,17 @@ vec3 ads(in vec3 position, in vec3 normal)
 	// AMBIENT
 	vec3 ambient = light.ambientLight;
 	// DIFFUSE
-	vec3 lightDir = normalize(light.lightPosition - position);
-	float intensity = max(dot(lightDir, normal), 0);
+	vec3 lightDir = (light.type == DIRECTIONAL) ? normalize(-light.direction) : normalize(light.lightPosition - position);
 
-	vec3 diffuse = material.diffuse * (light.diffuseLight * intensity);
+	float spotIntensity = 1;
+	if (light.type == SPOT)
+	{
+		float angle = acos(dot(light.direction, lightDir));
+		if (angle > light.cutoff) spotIntensity = 0;
+	}
+
+	float intensity = max(dot(lightDir, normal), 0);
+	vec3 diffuse = material.diffuse * (light.diffuseLight * intensity * spotIntensity);
 
 	// SPECULAR
 	vec3 specular = vec3(0);
@@ -38,8 +51,8 @@ vec3 ads(in vec3 position, in vec3 normal)
 	{
 		vec3 reflection = reflect(-lightDir, normal);
 		vec3 viewDir = normalize(-position);
-		vec3 halfwayDir = normalize(lightDir + viewDir);
-		intensity = max(dot(normal, halfwayDir), 0);
+		//vec3 halfwayDir = normalize(lightDir + viewDir);
+		intensity = max(dot(reflection, viewDir), 0);
 		intensity = pow(intensity, material.shininess);
 		specular = material.specular * intensity;
 	}

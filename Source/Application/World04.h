@@ -33,8 +33,8 @@ namespace nc {
 		float m_rotateSpeed = 30;
 
 		glm::vec3 ambientLight{ 0.2f, 0.2f, 0.2f };
-		light_t m_light;
-		//light_t m_lights[3];
+		//light_t m_light;
+		light_t m_lights[3];
 		int m_selected = 0;
 
 		Transform m_transform;

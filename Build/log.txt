@@ -1,1 +1,25 @@
-INFO: Main.cpp(12) Initialize Engine...
+INFO: Factory.h(75) Class registered: ModelComponent
+INFO: Factory.h(75) Class registered: LightComponent
+INFO: Factory.h(75) Class registered: EnginePhysicsComponent
+INFO: Factory.h(75) Class registered: Actor
+INFO: Main.cpp(13) Initialize Engine...
+ASSERT: Renderer.cpp(154) OPENGL Source: ShaderCompiler Type: Error(0) | SHADER_ID_COMPILE error has been generated. GLSL compile failed for shader 3, "": ERROR: 0:79: 'ambientLight' : undeclared identifier 
+ERROR: 0:79: 'constructor' : not enough data provided for construction 
+ERROR: 0:82: 'numLights' : undeclared identifier 
+ERROR: 0:87: 'lights' : undeclared identifier 
+ERROR: 0:87: 'lights' : left of '[' is not of type array, matrix, or vector 
+ERROR: 0:87: 'type' : illegal vector field selection 
+ERROR: 0:87: 'lights' : left of '[' is not of type array, matrix, or vector 
+ERROR: 0:87: 'position' : illegal vector field selection 
+ERROR: 0:87: 'lights' : left of '[' is not of type array, matrix, or vector 
+ERROR: 0:87: 'range' : illegal vector field selection 
+ERROR: 0:88: 'attenuation' : no matching overloaded function found (using implicit conversion) 
+ERROR: 0:88: 'attenuation' : function is not known 
+ERROR: 0:89: 'phong' : undeclared identifier 
+ERROR: 0:89: 'lights' : left of '[' is not of type array, matrix, or vector 
+ERROR: 0:90: 'phong' : function name expected 
+ERROR: 0:90: 'phong' : function is not known 
+ERROR: 0:90: 'lights' : left of '[' is not of type array, matrix, or vector 
+ERROR: 0:90: 'intensity' : illegal vector field selection 
+
+

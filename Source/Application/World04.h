@@ -15,7 +15,10 @@ namespace nc {
 		glm::vec3 position;
 		glm::vec3 direction;
 		glm::vec3 color;
-		float cutoff;
+		float intensity;
+		float range;
+		float innerAngle;
+		float outerAngle;
 	};
 
 	class World04 : public World {
@@ -31,6 +34,7 @@ namespace nc {
 
 		glm::vec3 ambientLight{ 0.2f, 0.2f, 0.2f };
 		light_t m_light;
+		bool m_selected = false;
 
 		Transform m_transform;
 		res_t<Model> m_model;

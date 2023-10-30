@@ -21,8 +21,8 @@ int main(int argc, char* argv[]) {
 	//auto world = make_unique<nc::World01>();
 	//auto world = make_unique<nc::World02>();
 	//auto world = make_unique<nc::World03>();
-	auto world = make_unique<nc::World04>();
-	//auto world = make_unique<nc::World05>();
+	//auto world = make_unique<nc::World04>();
+	auto world = make_unique<nc::World05>();
 	world->Initialize();
 
 	// main loop

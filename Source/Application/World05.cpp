@@ -8,7 +8,9 @@
 namespace nc {
     bool World05::Initialize() {
         m_scene = std::make_unique<Scene>();
-        {
+        m_scene->Load("scenes/scene.json");
+        m_scene->Initialize();
+        /* {
             auto actor = CREATE_CLASS(Actor);
             actor->name = "actor1";
             actor->transform.position = glm::vec3{ 0, 0, 0 };
@@ -18,7 +20,7 @@ namespace nc {
             modelComponent->m_model->Load("models/squirrel.glb", glm::vec3{ 0, -0.7f, 0 }, glm::vec3{ 0 }, glm::vec3{ 0.4f });
             actor->AddComponent(std::move(modelComponent));
             m_scene->Add(std::move(actor));
-        }
+        } */
 
         {
             auto actor = CREATE_CLASS(Actor);
@@ -33,6 +35,19 @@ namespace nc {
             lightComponent->outerAngle = 30.0f;
             actor->AddComponent(std::move(lightComponent));
             m_scene->Add(std::move(actor));
+
+            actor = CREATE_CLASS(Actor);
+            actor->name = "camera1";
+            actor->transform.position = glm::vec3{ 0, 0, 18 };
+            actor->transform.rotation = glm::vec3{ 0, 180, 0 };
+
+            auto cameraComponent = CREATE_CLASS(CameraComponent);
+            cameraComponent->SetPerspective(70.0f, (float)ENGINE.GetSystem<Renderer>()->GetWidth() / (float)ENGINE.GetSystem<Renderer>()->GetHeight(), 0.1f, 100.0f);
+            actor->AddComponent(std::move(cameraComponent));
+
+
+
+            m_scene->Add(std::move(actor));
         }
         return true;
     }
@@ -43,7 +58,7 @@ namespace nc {
     void World05::Update(float dt) {
         ENGINE.GetSystem<Gui>()->BeginFrame();
         m_scene->Update(dt);
-        //m_scene->ProcessGui();
+        m_scene->ProcessGui();
         
         //m_angle += dt * 3;
         //m_transform.rotation.z += 30 * dt;
@@ -84,14 +99,14 @@ namespace nc {
         // model matrix
         //material->GetProgram()->SetUniform("model", m_transform.GetMatrix());
 
-        // view matrix
-        glm::mat4 view = glm::lookAt(glm::vec3{ 0, 0, 3 }, glm::vec3{ 0, 0, 0 }, glm::vec3{ 0, 1, 0 });
-        material->GetProgram()->SetUniform("view", view);
+        //// view matrix
+        //glm::mat4 view = glm::lookAt(glm::vec3{ 0, 0, 3 }, glm::vec3{ 0, 0, 0 }, glm::vec3{ 0, 1, 0 });
+        //material->GetProgram()->SetUniform("view", view);
 
-        // projection matrix
-        glm::mat4 projection = glm::perspective(glm::radians(70.0f), ENGINE.GetSystem<Renderer>()->GetWidth() / (float)ENGINE.GetSystem<Renderer>()->GetHeight(), 0.01f, 100.0f);
-        material->GetProgram()->SetUniform("projection", projection);
-        ENGINE.GetSystem<Gui>()->EndFrame();
+        //// projection matrix
+        //glm::mat4 projection = glm::perspective(glm::radians(70.0f), ENGINE.GetSystem<Renderer>()->GetWidth() / (float)ENGINE.GetSystem<Renderer>()->GetHeight(), 0.01f, 100.0f);
+        //material->GetProgram()->SetUniform("projection", projection);
+        //ENGINE.GetSystem<Gui>()->EndFrame();
     }
 
     void World05::Draw(Renderer& renderer) {

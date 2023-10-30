@@ -164,6 +164,7 @@
     <ClInclude Include="World05.h" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\..\Build\Assets\Scenes\scene.json" />
     <None Include="..\..\Build\Assets\Shaders\lit_texture.frag" />
     <None Include="..\..\Build\Assets\Shaders\lit_texture.prog" />
     <None Include="..\..\Build\Assets\Shaders\lit_texture.vert" />

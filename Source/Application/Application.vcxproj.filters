@@ -8,6 +8,9 @@
     <Filter Include="Shaders">
       <UniqueIdentifier>{afb6dafd-7de0-4e44-9701-a2cdaa67d30f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Scenes">
+      <UniqueIdentifier>{8666f436-c186-421c-8f75-41713be9b212}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -97,6 +100,9 @@
     </None>
     <None Include="..\..\Build\Assets\Shaders\multi_lit_texture.frag">
       <Filter>Shaders</Filter>
+    </None>
+    <None Include="..\..\Build\Assets\Scenes\scene.json">
+      <Filter>Scenes</Filter>
     </None>
   </ItemGroup>
 </Project>

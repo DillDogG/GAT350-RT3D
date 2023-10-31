@@ -4,3 +4,4 @@ INFO: Factory.h(74) Class registered: EnginePhysicsComponent
 INFO: Factory.h(74) Class registered: CameraComponent
 INFO: Factory.h(74) Class registered: Actor
 INFO: Main.cpp(13) Initialize Engine...
+WARNING: Program.cpp(165) Could not find uniform location: material.specular

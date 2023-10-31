@@ -18,6 +18,20 @@ int main(int argc, char* argv[]) {
 
 	ENGINE.Initialize();
 
+	string dog = "Dog";
+	string DOG = "dOG";
+	string dOg = "dOgG";
+	cout << nc::ToUpper(dog) << endl;
+	cout << nc::ToLower(DOG) << endl;
+	cout << nc::IsEqualIgnoreCase(dog, DOG) << endl;
+	cout << nc::IsEqualIgnoreCase(dog, dOg) << endl;
+	nc::CreateUnique(dog);
+	cout << dog << endl;
+	cout << dog << endl;
+	nc::CreateUnique(dog);
+	cout << dog << endl;
+	cout << dog << endl;
+	
 	//auto world = make_unique<nc::World01>();
 	//auto world = make_unique<nc::World02>();
 	//auto world = make_unique<nc::World03>();

@@ -5,3 +5,4 @@ INFO: Factory.h(74) Class registered: CameraComponent
 INFO: Factory.h(74) Class registered: Actor
 INFO: Main.cpp(13) Initialize Engine...
 WARNING: Program.cpp(165) Could not find uniform location: material.specular
+ERROR: Renderer.cpp(157) OPENGL Source: OpenGL Type: Performance(131218) | Program/shader state performance warning: Vertex shader in program 1 is being recompiled based on GL state.

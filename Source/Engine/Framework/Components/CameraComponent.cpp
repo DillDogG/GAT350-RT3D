@@ -23,7 +23,7 @@ namespace nc
 	{
 		// set view matrix with glm::lookAt function, use owner position
 		//view = glm::lookAt(m_owner->transform, m_owner->transform.GetMatrix() + m_owner->transform.Forward(), m_owner->transform.Up());
-		view = glm::lookAt(m_owner->transform.position, m_owner->transform.position + m_owner->transform.Forward(), glm::vec3{ 0, 1, 0 });
+		view = glm::lookAt(m_owner->transform.position, m_owner->transform.position + m_owner->transform.Forward(), m_owner->transform.Up());
 		// set projection matrix with glm::perspective function (fov is in degrees, convert to radians)
 		projection = glm::perspective(glm::radians(fov), ENGINE.GetSystem<Renderer>()->GetWidth() / (float)ENGINE.GetSystem<Renderer>()->GetHeight(), 0.01f, 100.0f);
 	}

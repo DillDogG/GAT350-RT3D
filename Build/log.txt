@@ -4,5 +4,21 @@ INFO: Factory.h(74) Class registered: EnginePhysicsComponent
 INFO: Factory.h(74) Class registered: CameraComponent
 INFO: Factory.h(74) Class registered: Actor
 INFO: Main.cpp(13) Initialize Engine...
+WARNING: Program.cpp(165) Could not find uniform location: lights[0].type
+WARNING: Program.cpp(165) Could not find uniform location: lights[0].position
+WARNING: Program.cpp(165) Could not find uniform location: lights[0].direction
+WARNING: Program.cpp(165) Could not find uniform location: lights[0].color
+WARNING: Program.cpp(165) Could not find uniform location: lights[0].intensity
+WARNING: Program.cpp(165) Could not find uniform location: lights[0].range
+WARNING: Program.cpp(165) Could not find uniform location: lights[0].innerAngle
+WARNING: Program.cpp(165) Could not find uniform location: lights[0].outerAngle
+WARNING: Program.cpp(165) Could not find uniform location: numLights
+WARNING: Program.cpp(165) Could not find uniform location: ambientLight
+WARNING: Program.cpp(165) Could not find uniform location: material.params
+WARNING: Program.cpp(165) Could not find uniform location: material.albedo
 WARNING: Program.cpp(165) Could not find uniform location: material.specular
-ERROR: Renderer.cpp(157) OPENGL Source: OpenGL Type: Performance(131218) | Program/shader state performance warning: Vertex shader in program 1 is being recompiled based on GL state.
+WARNING: Program.cpp(165) Could not find uniform location: material.emissive
+WARNING: Program.cpp(165) Could not find uniform location: material.shininess
+WARNING: Program.cpp(165) Could not find uniform location: material.tiling
+WARNING: Program.cpp(165) Could not find uniform location: material.offset
+WARNING: Program.cpp(165) Could not find uniform location: model

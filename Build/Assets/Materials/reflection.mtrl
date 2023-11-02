@@ -1,5 +1,5 @@
 {
-  "program": "shaders/skybox.prog",
+  "program": "shaders/reflection.prog",
   "cubemap": "Yokohama",
   "cubemaps": [
     "textures/Yokohama/posx.jpg",

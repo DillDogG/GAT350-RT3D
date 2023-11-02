@@ -17,6 +17,8 @@ namespace nc {
 		float m_speed = 5;
 		float m_rotateSpeed = 30;
 
+		float m_refraction{ 1 };
+
 		//Transform m_transform;
 		//res_t<Model> m_model;
 	};

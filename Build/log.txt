@@ -74,7 +74,16 @@ WARNING: Program.cpp(165) Could not find uniform location: material.params
 WARNING: Program.cpp(165) Could not find uniform location: material.specular
 WARNING: Program.cpp(165) Could not find uniform location: material.emissive
 WARNING: Program.cpp(165) Could not find uniform location: material.shininess
+WARNING: Program.cpp(165) Could not find uniform location: material.tiling
+WARNING: Program.cpp(165) Could not find uniform location: material.offset
 WARNING: Program.cpp(165) Could not find uniform location: material.params
 WARNING: Program.cpp(165) Could not find uniform location: material.specular
 WARNING: Program.cpp(165) Could not find uniform location: material.emissive
 WARNING: Program.cpp(165) Could not find uniform location: material.shininess
+WARNING: Program.cpp(165) Could not find uniform location: material.params
+WARNING: Program.cpp(165) Could not find uniform location: material.albedo
+WARNING: Program.cpp(165) Could not find uniform location: material.specular
+WARNING: Program.cpp(165) Could not find uniform location: material.emissive
+WARNING: Program.cpp(165) Could not find uniform location: material.shininess
+WARNING: Program.cpp(165) Could not find uniform location: material.tiling
+WARNING: Program.cpp(165) Could not find uniform location: material.offset

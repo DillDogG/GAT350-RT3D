@@ -19,7 +19,7 @@ uniform mat4 projection;
 
 void main()
 {
-	otexcoord = (vtexcoord * material.tiling) + material.offset;
+	otexcoord = vtexcoord;//(vtexcoord * material.tiling) + material.offset;
 
 	// get world position
 	vec3 position = model[3].xyz;

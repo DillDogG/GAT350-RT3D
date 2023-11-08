@@ -40,13 +40,18 @@ namespace nc {
             actor = CREATE_CLASS(Actor);
             actor->name = "camera1";
             actor->transform.position = glm::vec3{ 0, 0, 2 };
-            actor->transform.rotation = glm::vec3{ 0, 180, 0 };
+            actor->transform.rotation = glm::radians(glm::vec3{ 0, 180, 0 });
 
             auto cameraComponent = CREATE_CLASS(CameraComponent);
             cameraComponent->SetPerspective(70.0f, (float)ENGINE.GetSystem<Renderer>()->GetWidth() / (float)ENGINE.GetSystem<Renderer>()->GetHeight(), 0.1f, 100.0f);
             actor->AddComponent(std::move(cameraComponent));
 
-
+            auto cameraController = CREATE_CLASS(CameraController);
+            cameraController->speed = 5;
+            cameraController->sensitivity = 0.5f;
+            cameraController->m_owner = actor.get();
+            cameraController->Initialize();
+            actor->AddComponent(std::move(cameraController));
 
             m_scene->Add(std::move(actor));
         }
@@ -74,7 +79,7 @@ namespace nc {
         //m_transform.rotation.z += 30 * dt;
         // Model Movement
         auto actor = m_scene->GetActorByName<Actor>("actor1");
-        actor->transform.position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A) ? m_speed * -dt : 0;
+        /*actor->transform.position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_A) ? m_speed * -dt : 0;
         actor->transform.position.x += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_D) ? m_speed *  dt : 0;
         actor->transform.position.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_W) ? m_speed * -dt : 0;
         actor->transform.position.z += ENGINE.GetSystem<InputSystem>()->GetKeyDown(SDL_SCANCODE_S) ? m_speed *  dt : 0;
@@ -95,10 +100,10 @@ namespace nc {
             actor->transform.scale.x = 1.0f;
             actor->transform.scale.y = 1.0f;
             actor->transform.scale.z = 1.0f;
-        }
+        } */
         m_time += dt;
 
-        auto material = actor->GetComponent<ModelComponent>()->m_model->GetMaterial();
+        auto material = actor->GetComponent<ModelComponent>()->m_material;
         material->ProcessGui();
         material->Bind();
 

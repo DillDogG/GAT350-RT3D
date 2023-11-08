@@ -10,13 +10,12 @@ namespace nc
 	{
 		if (!modelName.empty())
 		{
-			m_model = std::make_shared<Model>();
-			m_model->Load(modelName);
-			//ADD_RESOURCE(modelName, model);
+			m_model = GET_RESOURCE(Model, modelName);
+			
 		}
 		if (m_model && !materialName.empty())
 		{
-			m_model->SetMaterial(GET_RESOURCE(Material, materialName));
+			m_material = (GET_RESOURCE(Material, materialName));
 		}
 
 		return true;
@@ -28,9 +27,8 @@ namespace nc
 
 	void ModelComponent::Draw(Renderer& renderer)
 	{
-		auto material = m_model->GetMaterial();
-		material->Bind();
-		material->GetProgram()->SetUniform("model", m_owner->transform.GetMatrix());
+		m_material->Bind();
+		m_material->GetProgram()->SetUniform("model", m_owner->transform.GetMatrix());
 
 		glDepthMask(enableDepth);
 		glCullFace(cullface);

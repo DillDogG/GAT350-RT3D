@@ -10,6 +10,7 @@
 #include "Components/RenderComponent.h"
 #include "Components/ModelComponent.h"
 #include "Components/CameraComponent.h"
+#include "Components/CameraController.h"
 
 #include "Components/LightComponent.h"
 

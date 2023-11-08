@@ -2,62 +2,7 @@
 	"actors": [
 		{
 			"type": "Actor",
-			"name": "skybox",
-			"persistent": true,
-			"transform": {
-				"position": [ 0, 0, 0 ],
-				"scale": [ 1, 1, 1 ],
-				"rotation": [ 0, 0, 0 ]
-			},
-			"components": [
-				{
-					"type": "ModelComponent",
-					"modelName": "models/cube.obj",
-					"materialName": "materials/skybox.mtrl",
-					"enableDepth": false,
-					"cullface": "front"
-				}
-			]
-		},
-		{
-			"type": "Actor",
 			"name": "actor1",
-			"persistent": true,
-			"active": false,
-			"transform": {
-				"position": [ 0, 0, 0 ],
-				"scale": [ 1, 1, 1 ],
-				"rotation": [ 0, 0, 0 ]
-			},
-			"components": [
-				{
-					"type": "ModelComponent",
-					"modelName": "models/ogre.obj",
-					"materialName": "materials/refraction.mtrl"
-				}
-			]
-		},
-		{
-			"type": "Actor",
-			"name": "actor2",
-			"persistent": true,
-			"active": false,
-			"transform": {
-				"position": [ 1, 0, 0 ],
-				"scale": [ 1, 1, 1 ],
-				"rotation": [ 0, 0, 0 ]
-			},
-			"components": [
-				{
-					"type": "ModelComponent",
-					"modelName": "models/ogre.obj",
-					"materialName": "materials/reflection.mtrl"
-				}
-			]
-		},
-		{
-			"type": "Actor",
-			"name": "actor3",
 			"persistent": true,
 			"transform": {
 				"position": [ -1, 0, 0 ],
@@ -69,23 +14,10 @@
 					"type": "ModelComponent",
 					"modelName": "models/ogre.obj",
 					"materialName": "materials/ogre.mtrl"
-				}
-			]
-		},
-		{
-			"type": "Actor",
-			"name": "sprite",
-			"persistent": true,
-			"transform": {
-				"position": [ 0, 0, 0 ],
-				"scale": [ 1, 1, 1 ],
-				"rotation": [ 0, 0, 0 ]
-			},
-			"components": [
+				},
 				{
-					"type": "ModelComponent",
-					"modelName": "models/quad.obj",
-					"materialName": "materials/sprite.mtrl"
+					"type": "RotateComponent",
+					"rotate": [ 0, 0, 0 ]
 				}
 			]
 		},
@@ -104,6 +36,23 @@
 					"type": "ModelComponent",
 					"modelName": "models/quad.obj",
 					"materialName": "materials/tree.mtrl"
+				}
+			]
+		},
+		{
+			"type": "Actor",
+			"name": "cube",
+			"persistent": true,
+			"transform": {
+				"position": [ 1, 0, 0 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "models/cube.obj",
+					"materialName": "materials/framebuffer.mtrl"
 				}
 			]
 		},

@@ -59,12 +59,16 @@ namespace nc
 		// use ImGui::DragFloat to set fov, aspect, near and far values (use speed of 0.1f)
 		ImGui::DragFloat("FOV", &fov, 0.1f, 70, 120);
 		ImGui::DragFloat("Aspect", &aspect, 0.1f, 70, 120);
-		ImGui::DragFloat("Near", &near, 0.1f, 70, far);
-		ImGui::DragFloat("Far", &far, 0.1f, near, 120);
+		ImGui::DragFloat("Near", &near, 0.1f, 0, far);
+		ImGui::DragFloat("Far", &far, 0.1f, near, 1000);
 	}
 
 	void CameraComponent::Read(const json_t& value)
 	{
 		// READ_DATA of fov, aspect, near and far values
+		READ_DATA(value, fov);
+		READ_DATA(value, aspect);
+		READ_DATA(value, near);
+		READ_DATA(value, far);
 	}
 }

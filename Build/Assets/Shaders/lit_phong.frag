@@ -10,8 +10,8 @@
 #define EMISSIVE_TEXTURE_MASK (1 << 3) // 1000
 
 in layout(location = 0) vec3 fposition;
-in layout(location = 1) vec3 fnormal;
-in layout(location = 2) vec2 ftexcoord;
+in layout(location = 1) vec2 ftexcoord;
+in layout(location = 2) vec3 fnormal;
 
 out layout(location = 0) vec4 ocolor;
 

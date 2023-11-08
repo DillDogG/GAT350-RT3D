@@ -3,6 +3,7 @@
 #include "World03.h"
 #include "World04.h"
 #include "World05.h"
+#include "World06.h"
 #include "Core/Core.h"
 #include "Framework/Framework.h"
 #include "Renderer/Renderer.h"
@@ -36,7 +37,8 @@ int main(int argc, char* argv[]) {
 	//auto world = make_unique<nc::World02>();
 	//auto world = make_unique<nc::World03>();
 	//auto world = make_unique<nc::World04>();
-	auto world = make_unique<nc::World05>();
+	//auto world = make_unique<nc::World05>();
+	auto world = make_unique<nc::World06>();
 	world->Initialize();
 
 	// main loop

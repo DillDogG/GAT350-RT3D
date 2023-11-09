@@ -22,6 +22,6 @@ namespace nc {
 
 	void RotateComponent::Read(const json_t& value)
 	{
-		READ_DATA(value, euler);
+		READ_NAME_DATA(value, "rotate", euler);
 	}
 }

@@ -17,7 +17,7 @@
 				},
 				{
 					"type": "RotateComponent",
-					"rotate": [ 0, 0, 0 ]
+					"rotate": [ 0, 30, 0 ]
 				}
 			]
 		},
@@ -41,18 +41,17 @@
 		},
 		{
 			"type": "Actor",
-			"name": "cube",
+			"name": "postprocess",
 			"persistent": true,
-			"transform": {
-				"position": [ 1, 0, 0 ],
-				"scale": [ 1, 1, 1 ],
-				"rotation": [ 0, 0, 0 ]
-			},
 			"components": [
 				{
 					"type": "ModelComponent",
-					"modelName": "models/cube.obj",
-					"materialName": "materials/framebuffer.mtrl"
+					"modelName": "models/quad.obj",
+					"materialName": "materials/postprocess.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"rotate": [ 0, 30, 0 ]
 				}
 			]
 		},

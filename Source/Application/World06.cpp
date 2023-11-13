@@ -52,18 +52,21 @@ namespace nc {
             // sets params to XXX1 if checkbox is true, sets to XXX0 if false
             if (effect) m_params |= INVERT_MASK;
             else m_params ^= INVERT_MASK;
+            //(effect) ? m_params |= INVERT_MASK : m_params &= -INVERT_MASK;
         }
         effect = m_params & GRAYSCALE_MASK;
         if (ImGui::Checkbox("Grayscale", &effect)) {
             // sets params to XX1X if checkbox is true, sets to XX0X if false
             if (effect) m_params |= GRAYSCALE_MASK;
             else m_params ^= GRAYSCALE_MASK;
+            //(effect) ? m_params |= GRAYSCALE_MASK : m_params &= -GRAYSCALE_MASK;
         }
         effect = m_params & COLORTINT_MASK;
         if (ImGui::Checkbox("Colortint", &effect)) {
             // sets params to X1XX if checkbox is true, sets to X0XX if false
             if (effect) m_params |= COLORTINT_MASK;
             else m_params ^= COLORTINT_MASK;
+            //(effect) ? m_params |= COLORTINT_MASK : m_params &= -COLORTINT_MASK;
         }
         ImGui::End();
 

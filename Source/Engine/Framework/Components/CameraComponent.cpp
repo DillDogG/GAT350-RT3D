@@ -24,8 +24,14 @@ namespace nc
 		// set view matrix with glm::lookAt function, use owner position
 		//view = glm::lookAt(m_owner->transform, m_owner->transform.GetMatrix() + m_owner->transform.Forward(), m_owner->transform.Up());
 		view = glm::lookAt(m_owner->transform.position, m_owner->transform.position + m_owner->transform.Forward(), m_owner->transform.Up());
+
+		if (projectionType == Perspective) {
+			projection = glm::perspective(glm::radians(fov), aspect, near, far);
+		} else {
+			projection = glm::ortho(-size * aspect * 0.5f, size * aspect * 0.5f, -size * 0.5f, size * 0.5f, near, far);
+		}
 		// set projection matrix with glm::perspective function (fov is in degrees, convert to radians)
-		projection = glm::perspective(glm::radians(fov), ENGINE.GetSystem<Renderer>()->GetWidth() / (float)ENGINE.GetSystem<Renderer>()->GetHeight(), 0.01f, 100.0f);
+		//projection = glm::perspective(glm::radians(fov), ENGINE.GetSystem<Renderer>()->GetWidth() / (float)ENGINE.GetSystem<Renderer>()->GetHeight(), 0.01f, 100.0f);
 	}
 
 	void CameraComponent::SetPerspective(float fov, float aspect, float near, float far)
@@ -57,10 +63,14 @@ namespace nc
 	void CameraComponent::ProcessGui()
 	{
 		// use ImGui::DragFloat to set fov, aspect, near and far values (use speed of 0.1f)
+		const char* types[] = { "Perspective", "Orthographic" };
+		ImGui::Combo("Projection", (int*)(&projectionType), types, 2);
+
 		ImGui::DragFloat("FOV", &fov, 0.1f, 70, 120);
 		ImGui::DragFloat("Aspect", &aspect, 0.1f, 70, 120);
 		ImGui::DragFloat("Near", &near, 0.1f, 0, far);
 		ImGui::DragFloat("Far", &far, 0.1f, near, 1000);
+		ImGui::DragFloat("Size", &size, 0.1f, near, 1000);
 	}
 
 	void CameraComponent::Read(const json_t& value)
@@ -70,5 +80,11 @@ namespace nc
 		READ_DATA(value, aspect);
 		READ_DATA(value, near);
 		READ_DATA(value, far);
+
+		std::string projectionTypeName;
+		READ_NAME_DATA(value, "projectionType", projectionTypeName);
+		if (IsEqualIgnoreCase("orthographic", projectionTypeName)) projectionType = Orthographic;
+
+		READ_DATA(value, size);
 	}
 }

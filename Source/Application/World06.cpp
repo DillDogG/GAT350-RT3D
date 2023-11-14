@@ -70,12 +70,21 @@ namespace nc {
         }
         effect = m_params & GRAIN_MASK;
         if (ImGui::Checkbox("Grain", &effect)) {
-            // sets params to X1XX if checkbox is true, sets to X0XX if false
             if (effect) m_params |= GRAIN_MASK;
             else m_params ^= GRAIN_MASK;
-            //(effect) ? m_params |= COLORTINT_MASK : m_params &= -COLORTINT_MASK;
+        }
+        effect = m_params & SCANLINE_MASK;
+        if (ImGui::Checkbox("Scanline", &effect)) {
+            if (effect) m_params |= SCANLINE_MASK;
+            else m_params ^= SCANLINE_MASK;
+        }
+        effect = m_params & CUSTOM_MASK;
+        if (ImGui::Checkbox("Lens Flare", &effect)) {
+            if (effect) m_params |= CUSTOM_MASK;
+            else m_params ^= CUSTOM_MASK;
         }
         ImGui::ColorEdit3("Color", glm::value_ptr(m_colorTint));
+        ImGui::DragFloat2("Flare Position", glm::value_ptr(m_flarePos));
         ImGui::End();
 
         // set postprocess shader
@@ -85,6 +94,7 @@ namespace nc {
             program->SetUniform("blend", m_blend);
             program->SetUniform("params", m_params);
             program->SetUniform("colorTint", m_colorTint);
+            program->SetUniform("flarePos", m_flarePos);
             program->SetUniform("time", m_time);
         }
         

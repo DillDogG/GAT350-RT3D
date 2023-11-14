@@ -68,6 +68,14 @@ namespace nc {
             else m_params ^= COLORTINT_MASK;
             //(effect) ? m_params |= COLORTINT_MASK : m_params &= -COLORTINT_MASK;
         }
+        effect = m_params & GRAIN_MASK;
+        if (ImGui::Checkbox("Grain", &effect)) {
+            // sets params to X1XX if checkbox is true, sets to X0XX if false
+            if (effect) m_params |= GRAIN_MASK;
+            else m_params ^= GRAIN_MASK;
+            //(effect) ? m_params |= COLORTINT_MASK : m_params &= -COLORTINT_MASK;
+        }
+        ImGui::ColorEdit3("Color", glm::value_ptr(m_colorTint));
         ImGui::End();
 
         // set postprocess shader
@@ -76,6 +84,8 @@ namespace nc {
             program->Use();
             program->SetUniform("blend", m_blend);
             program->SetUniform("params", m_params);
+            program->SetUniform("colorTint", m_colorTint);
+            program->SetUniform("time", m_time);
         }
         
         auto actor = m_scene->GetActorByName<Actor>("actor1");

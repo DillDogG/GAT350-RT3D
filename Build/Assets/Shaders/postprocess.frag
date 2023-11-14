@@ -3,14 +3,24 @@
 #define    INVERT_MASK	(1 << 0)
 #define GRAYSCALE_MASK  (1 << 1)
 #define COLORTINT_MASK  (1 << 2)
+#define		GRAIN_MASK  (1 << 3)
+#define	 SCANLINE_MASK  (1 << 4)
+#define	   CUSTOM_MASK  (1 << 5)
 
 in layout(location = 0) vec2 ftexcoord;
 out layout(location = 0) vec4 ocolor;
 
 uniform float blend = 1;
 uniform uint params = 0;
+uniform vec3 colorTint = { 0, 0, 0 };
+uniform float time = 0;
 
 layout(binding = 0) uniform sampler2D screenTexture;
+
+float random(vec2 st) 
+{
+	return fract(sin(dot(st.xy, vec2(12.9898, 78.233))) * 43758.5453);
+}
 
 vec4 invert(in vec4 color)
 {
@@ -22,6 +32,11 @@ vec4 grayscale(in vec4 color)
 	return vec4(vec3((color.r + color.g + color.b) / 3), color.a);
 }
 
+vec4 grain(in vec4 color)
+{
+	return color * random(gl_FragCoord.xy + time);
+}
+
 void main()
 {
 	vec4 basecolor = texture(screenTexture, ftexcoord);
@@ -29,7 +44,8 @@ void main()
 
 	if (bool(params &    INVERT_MASK)) postprocess =    invert(postprocess);
 	if (bool(params & GRAYSCALE_MASK)) postprocess = grayscale(postprocess);
-	// if (bool(params & COLORTINT_MASK)) postprocess = // mix the color with a color passed in;
+	if (bool(params & COLORTINT_MASK)) postprocess = mix(basecolor, vec4(colorTint.rgb, basecolor.a), 0.75);
+	if (bool(params &     GRAIN_MASK)) postprocess =	 grain(postprocess);
 
 	ocolor = mix(basecolor, postprocess, blend);
 }

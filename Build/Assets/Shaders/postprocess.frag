@@ -13,7 +13,7 @@ out layout(location = 0) vec4 ocolor;
 uniform float blend = 1;
 uniform uint params = 0;
 uniform vec3 colorTint = { 0 };
-uniform vec2 flarePos = { 0 };
+uniform vec2 flarePos = { 300 };
 uniform float time = 0;
 
 layout(binding = 0) uniform sampler2D screenTexture;

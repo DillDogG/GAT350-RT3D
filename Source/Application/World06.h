@@ -27,7 +27,7 @@ namespace nc {
 		uint32_t m_params = 0;
 
 		glm::vec3 m_colorTint{ 0 };
-		glm::vec2 m_flarePos{ 0 };
+		glm::vec2 m_flarePos{ 300 };
 
 		float m_refraction = 1;
 

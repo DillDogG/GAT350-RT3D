@@ -39,8 +39,8 @@ int main(int argc, char* argv[]) {
 	//auto world = make_unique<nc::World03>();
 	//auto world = make_unique<nc::World04>();
 	//auto world = make_unique<nc::World05>();
-	auto world = make_unique<nc::World06>();
-	//auto world = make_unique<nc::World07>();
+	//auto world = make_unique<nc::World06>();
+	auto world = make_unique<nc::World07>();
 	world->Initialize();
 
 	// main loop

@@ -5,7 +5,7 @@
 #define COLORTINT_MASK  (1 << 2)
 #define		GRAIN_MASK  (1 << 3)
 #define	 SCANLINE_MASK  (1 << 4)
-#define	   CUSTOM_MASK  (1 << 5)
+#define	   CUSTOM_MASK  (1 << 5) // bathroom tile
 
 in layout(location = 0) vec2 ftexcoord;
 out layout(location = 0) vec4 ocolor;

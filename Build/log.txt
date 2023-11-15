@@ -7,7 +7,6 @@ INFO: Factory.h(74) Class registered: CameraComponent
 INFO: Factory.h(74) Class registered: Actor
 INFO: Main.cpp(15) Initialize Engine...
 INFO: Factory.h(82) Prototype Class registered: tree
-WARNING: Program.cpp(165) Could not find uniform location: shadowVP
 WARNING: Program.cpp(165) Could not find uniform location: view
 WARNING: Program.cpp(165) Could not find uniform location: projection
 WARNING: Program.cpp(165) Could not find uniform location: lights[0].type
@@ -18,6 +17,7 @@ WARNING: Program.cpp(165) Could not find uniform location: lights[0].intensity
 WARNING: Program.cpp(165) Could not find uniform location: lights[0].range
 WARNING: Program.cpp(165) Could not find uniform location: lights[0].innerAngle
 WARNING: Program.cpp(165) Could not find uniform location: lights[0].outerAngle
+WARNING: Program.cpp(165) Could not find uniform location: shadowBias
 WARNING: Program.cpp(165) Could not find uniform location: numLights
 WARNING: Program.cpp(165) Could not find uniform location: ambientLight
 WARNING: Program.cpp(165) Could not find uniform location: lights[0].type
@@ -29,6 +29,7 @@ WARNING: Program.cpp(165) Could not find uniform location: lights[0].range
 WARNING: Program.cpp(165) Could not find uniform location: lights[0].innerAngle
 WARNING: Program.cpp(165) Could not find uniform location: lights[0].outerAngle
 WARNING: Program.cpp(165) Could not find uniform location: shadowVP
+WARNING: Program.cpp(165) Could not find uniform location: shadowBias
 WARNING: Program.cpp(165) Could not find uniform location: numLights
 WARNING: Program.cpp(165) Could not find uniform location: ambientLight
 WARNING: Program.cpp(165) Could not find uniform location: material.params

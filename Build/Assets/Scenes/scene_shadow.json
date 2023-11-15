@@ -52,7 +52,8 @@
 				{
 					"type": "ModelComponent",
 					"modelName": "fantasy/obj/SF_Env_Tile_Grass_01.obj",
-					"materialName": "fantasy/fantasy.mtrl"
+					"materialName": "fantasy/fantasy.mtrl",
+					"castShadow": false
 				}
 			]
 		},
@@ -60,6 +61,7 @@
 			"type": "Actor",
 			"name": "depth_debug",
 			"persistent": true,
+			"active": false,
 			"transform": {
 				"position": [ 2.4, 1.4, 0 ],
 				"scale": [ 1, 1, 1 ],
@@ -79,8 +81,8 @@
 			"persistent": true,
 			"transform": {
 				"position": [ 0, 3, 0 ],
-				"scale": [ 1, 1, 1 ],
-				"rotation": [ 90, 0, 0 ]
+				"scale": [ 0.1, 0.1, 0.1 ],
+				"rotation": [ 60, 30, 0 ]
 			},
 			"components": [
 				{
@@ -92,6 +94,11 @@
 					"innerAngle": 10,
 					"outerAngle": 30,
 					"castShadow": true
+				},
+				{
+					"type": "ModelComponent",
+					"modelName": "models/quad.obj",
+					"materialName": "materials/ui_light.mtrl"
 				}
 			]
 		},

@@ -4,13 +4,12 @@
   "albedo": [
     1,
     1,
-    1,
     1
   ],
   "specular": [
-    1,
-    1,
-    1
+    0,
+    0,
+    0
   ],
   "shininess": 60,
   "tiling": [ 1, 1 ],

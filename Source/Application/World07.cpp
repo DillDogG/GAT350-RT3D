@@ -12,7 +12,7 @@ namespace nc {
         m_scene->Initialize();
 
         auto texture = std::make_shared<Texture>();
-        texture->CreateDepthTexture(1024, 1024);
+        texture->CreateDepthTexture(512, 512);
         ADD_RESOURCE("depth_texture", texture);
 
         auto framebuffer = std::make_shared<Framebuffer>();
@@ -23,6 +23,11 @@ namespace nc {
         auto material = GET_RESOURCE(Material, "materials/sprite.mtrl");
         if (material) {
             material->albedoTexture = texture;
+        }
+
+        auto materials = GET_RESOURCES(Material);
+        for (auto material : materials) {
+            material->depthTexture = texture;
         }
 
         for (int i = 0; i < 2; i++) {
@@ -69,8 +74,11 @@ namespace nc {
 
         auto models = m_scene->GetComponents<ModelComponent>();
         for (auto model : models) {
-            program->SetUniform("model", model->m_owner->transform.GetMatrix());
-            model->m_model->Draw();
+            if (model->castShadow) {
+                //glCullFace(GL_FRONT);
+                program->SetUniform("model", model->m_owner->transform.GetMatrix());
+                model->m_model->Draw();
+            }
         }
 
         framebuffer->Unbind();

@@ -43,6 +43,9 @@ uniform struct Light
 uniform vec3 ambientLight;
 uniform int numLights = 3;
 uniform float shadowBias = 0.005;
+uniform int celLevels = 5;
+uniform float celSpecularCutoff = 0.3;
+const float celScaleFactor = 1.0 / celLevels;
 
 layout(binding = 0) uniform sampler2D albedoTexture;
 layout(binding = 1) uniform sampler2D specularTexture;
@@ -77,8 +80,11 @@ void phong(in Light light, in vec3 position, in vec3 normal, out vec3 diffuse, o
 		spotIntensity = smoothstep(light.outerAngle + 0.001, light.innerAngle, angle);
 	}
 
+	//float intensity = max(dot(lightDir, normal), 0) * spotIntensity;
 	float intensity = max(dot(lightDir, normal), 0) * spotIntensity;
-	diffuse = light.color * intensity;
+	float cellIntensity = floor(intensity * celLevels) * celScaleFactor;
+	diffuse = (light.color * cellIntensity);
+	//diffuse = light.color * intensity;
 
 	// SPECULAR
 	specular = vec3(0);

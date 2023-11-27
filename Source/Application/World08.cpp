@@ -8,6 +8,7 @@
 namespace nc {
     bool World08::Initialize() {
         m_scene = std::make_unique<Scene>();
+        m_scene->Load("scenes/scene_editor.json");
         m_scene->Load("scenes/scene_shadow.json");
         m_scene->Initialize();
 
@@ -51,7 +52,8 @@ namespace nc {
         m_time += dt;
         ENGINE.GetSystem<Gui>()->BeginFrame();
         m_scene->Update(dt);
-        m_scene->ProcessGui();
+        m_editor->Update();
+        //m_scene->ProcessGui();
 
         m_editor->ProcessGui(m_scene.get());
 

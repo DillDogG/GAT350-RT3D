@@ -23,6 +23,10 @@ namespace nc
 		return path.filename().string();
 	}
 
+	std::string getRelativePath(const std::filesystem::path& path) {
+		return std::filesystem::relative(path).string();
+	}
+
 	bool fileExists(const std::filesystem::path& path)
 	{
 		return std::filesystem::exists(path);

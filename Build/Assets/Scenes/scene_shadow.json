@@ -149,6 +149,27 @@
 					"rotate": [ 0, 30, 0 ]
 				}
 			]
+		},
+		{
+			"type": "Actor",
+			"name": "ogre",
+			"persistent": true,
+			"transform": {
+				"position": [ -1, 0, 2 ],
+				"scale": [ 1, 1, 1 ],
+				"rotation": [ 0, 0, 0 ]
+			},
+			"components": [
+				{
+					"type": "ModelComponent",
+					"modelName": "models/ogre.obj",
+					"materialName": "materials/ogre.mtrl"
+				},
+				{
+					"type": "RotateComponent",
+					"rotate": [ 0, 30, 0 ]
+				}
+			]
 		}
 	]
 }

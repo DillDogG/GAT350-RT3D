@@ -1,5 +1,5 @@
 {
-  "program": "shaders/lit_phong_cel.prog",
+  "program": "shaders/lit_phong.prog",
   "albedoTexture": "fantasy/textures/Medieval_Texture.png",
   "albedo": [
     1,
